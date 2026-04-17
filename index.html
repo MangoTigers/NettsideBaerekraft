@@ -5,126 +5,416 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bærekraft</title>
     <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+    <style>
+        :root {
+            --bg-page: #f2efe8;
+            --ink: #112016;
+            --muted: #3d4a42;
+            --card: #f9f7f2;
+            --accent: #2d6a4f;
+            --section-bg: linear-gradient(135deg, rgba(20, 33, 27, 0.88), rgba(20, 33, 27, 0.56));
+            --line: #d7d2c8;
+            --hero-bg: linear-gradient(135deg, rgba(17, 32, 22, 0.82), rgba(33, 64, 47, 0.55));
+        }
+
+        body {
+            margin: 0;
+            font-family: "Georgia", "Times New Roman", serif;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at 10% 10%, rgba(45, 106, 79, 0.08), transparent 45%),
+                radial-gradient(circle at 85% 20%, rgba(45, 106, 79, 0.06), transparent 40%),
+                var(--bg-page);
+        }
+
+        .site-shell {
+            overflow-x: clip;
+        }
+
+        .hero {
+            min-height: 110vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 10rem 0 8rem;
+            color: #f6f4ef;
+            background-image:
+                var(--hero-bg),
+                url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1800&q=80");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: auto 0 -1px 0;
+            height: 80px;
+            background: linear-gradient(180deg, rgba(242, 239, 232, 0), var(--bg-page));
+        }
+
+        .hero-label {
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+            font-size: 0.8rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 4.6rem);
+            line-height: 1.05;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero .lead {
+            font-size: clamp(1.1rem, 2vw, 1.45rem);
+            max-width: 760px;
+            color: rgba(246, 244, 239, 0.92);
+        }
+
+        .hero-image-slot {
+            margin-top: 3rem;
+            min-height: 260px;
+            border: 2px dashed rgba(246, 244, 239, 0.42);
+            border-radius: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+            font-size: 0.95rem;
+            color: rgba(246, 244, 239, 0.88);
+            padding: 1rem;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(2px);
+        }
+
+        .story-section {
+            min-height: 115vh;
+            padding: 10rem 0;
+            position: relative;
+            --section-photo: none;
+            background-image:
+                linear-gradient(
+                    180deg,
+                    rgba(8, 12, 10, 0.74) 0%,
+                    rgba(8, 12, 10, 0.26) 14%,
+                    rgba(8, 12, 10, 0.1) 50%,
+                    rgba(8, 12, 10, 0.26) 86%,
+                    rgba(8, 12, 10, 0.74) 100%
+                ),
+                var(--section-photo);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            box-shadow:
+                inset 0 90px 120px -90px rgba(6, 10, 8, 0.85),
+                inset 0 -90px 120px -90px rgba(6, 10, 8, 0.85);
+        }
+
+        .section-miljo {
+            --section-photo: url("https://images.unsplash.com/photo-1518773553398-650c184e0bb3?auto=format&fit=crop&w=1800&q=80");
+        }
+
+        .section-losninger {
+            --section-photo: url("https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1800&q=80");
+        }
+
+        .section-tanker {
+            --section-photo: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=80");
+        }
+
+        .story-section .section-frame {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 1.5rem;
+            padding: clamp(1.5rem, 3vw, 3.2rem);
+            box-shadow: 0 24px 60px rgba(17, 32, 22, 0.08);
+        }
+
+        .section-tag {
+            font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            font-size: 0.75rem;
+            color: var(--accent);
+            margin-bottom: 0.9rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 3.2vw, 3rem);
+            margin-bottom: 1.4rem;
+        }
+
+        .section-intro {
+            font-size: 1.08rem;
+            line-height: 1.75;
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .content-block {
+            padding: 1.2rem 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .content-block h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.65rem;
+        }
+
+        .content-block p,
+        .content-block li {
+            font-size: 1.02rem;
+            line-height: 1.8;
+            color: var(--muted);
+        }
+
+        .content-block ul {
+            margin-bottom: 0;
+            padding-left: 1.2rem;
+        }
+
+        .image-column {
+            min-height: 100%;
+            border-radius: 1.5rem;
+            border: 2px dashed #b6b0a6;
+            background-image:
+                var(--section-bg),
+                url("https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80");
+            background-size: cover;
+            background-position: center;
+            color: #f6f4ef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+            font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            min-height: 420px;
+        }
+
+        .image-miljo {
+            background-image:
+                var(--section-bg),
+                url("https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80");
+        }
+
+        .image-losninger {
+            background-image:
+                var(--section-bg),
+                url("https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?auto=format&fit=crop&w=1200&q=80");
+        }
+
+        .image-tanker {
+            background-image:
+                var(--section-bg),
+                url("https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1200&q=80");
+        }
+
+        .reflection-strip {
+            padding: 8rem 0 10rem;
+        }
+
+        .reflection-box {
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            background: #1a3426;
+            color: #f6f4ef;
+            border: 1px solid rgba(246, 244, 239, 0.18);
+        }
+
+        .reflection-box p {
+            line-height: 1.85;
+            margin-bottom: 0;
+            color: rgba(246, 244, 239, 0.92);
+        }
+
+        .spacer-end {
+            height: 22vh;
+        }
+
+        @media (max-width: 991px) {
+            .hero {
+                min-height: 95vh;
+                padding-top: 8rem;
+            }
+
+            .story-section {
+                min-height: auto;
+                padding: 6rem 0;
+                box-shadow:
+                    inset 0 62px 90px -62px rgba(6, 10, 8, 0.78),
+                    inset 0 -62px 90px -62px rgba(6, 10, 8, 0.78);
+            }
+
+            .reflection-strip {
+                padding: 5rem 0 6rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <div id="site-header"></div>
 
-    <main class="container py-5">
-        <section class="text-center mb-5">
-            <p class="text-uppercase text-success fw-semibold mb-2">Oppgave</p>
-            <h1 class="display-5 fw-semibold mb-3">Dataindustri, miljø og bærekraft</h1>
-            <p class="lead mb-4">Bruk denne nettsiden som en ryddig mal. Hver knapp peker til en del av oppgaven, og underknappene viser hva du kan skrive under hvert punkt.</p>
-            <div class="d-flex justify-content-center gap-2 flex-wrap">
-                <a class="btn btn-success btn-lg" href="#miljo">Miljøpåvirkning</a>
-                <a class="btn btn-outline-success btn-lg" href="#losninger">Bærekraftige løsninger</a>
-                <a class="btn btn-outline-success btn-lg" href="#tanker">Egne tanker</a>
-                <a class="btn btn-outline-success btn-lg" href="#kilder">Kilder</a>
-            </div>
-        </section>
+    <div class="site-shell">
+        <main>
+            <section class="hero" id="innledning">
+                <div class="container">
+                    <p class="hero-label">Innledning</p>
+                    <h1>Dataindustri, miljø og bærekraft</h1>
+                    <p class="lead">Dataindustrien er en viktig del av hverdagen vår. Vi bruker tjenester som YouTube, TikTok og spill hver dag. Men bak disse tjenestene finnes det store datasentre som bruker mye strøm og ressurser. I denne oppgaven skal jeg forklare hvordan dataindustrien påvirker miljøet, og hva som kan gjøres for å gjøre den mer bærekraftig.</p>
+                    <div class="hero-image-slot">Bakgrunnsbilde er lagt inn. Dette feltet kan brukes til bildetekst eller kort forklaring.</div>
+                </div>
+            </section>
 
-        <section class="row g-4">
-            <div class="col-lg-6" id="miljo">
-                <div class="card h-100 shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <h2 class="h4 mb-3">Miljøpåvirkning</h2>
-                        <div class="d-flex flex-wrap gap-2 mb-3">
-                            <a class="btn btn-sm btn-outline-success" href="#miljo-datasentre">Datasentre</a>
-                            <a class="btn btn-sm btn-outline-success" href="#miljo-energi">Energi</a>
-                            <a class="btn btn-sm btn-outline-success" href="#miljo-klima">Klima</a>
-                            <a class="btn btn-sm btn-outline-success" href="#miljo-eksempler">Eksempler</a>
+            <section class="story-section section-miljo" id="miljo">
+                <div class="container">
+                    <div class="row g-4 align-items-stretch">
+                        <div class="col-lg-7">
+                            <article class="section-frame">
+                                <p class="section-tag">1. Miljøpåvirkning</p>
+                                <h2 class="section-title">Hva skjer bak skjermen?</h2>
+                                <p class="section-intro">Datasentre er store bygninger fylt med servere som lagrer og behandler data. Når du streamer video, spiller spill eller bruker nettsky, er det datasentre som gjør jobben.</p>
+
+                                <div class="content-block" id="miljo-datasentre">
+                                    <h3>Hva er datasentre?</h3>
+                                    <p>Datasentre er store bygninger fylt med servere som lagrer og behandler data. Det er denne infrastrukturen som gjør at digitale tjenester kan være tilgjengelige hele tiden.</p>
+                                </div>
+
+                                <div class="content-block" id="miljo-energi">
+                                    <h3>Energibruk</h3>
+                                    <ul>
+                                        <li>Servere må være på hele tiden.</li>
+                                        <li>De trenger kjøling for å ikke bli overopphetet.</li>
+                                    </ul>
+                                    <p class="mt-2 mb-0">Dette fører til høyt strømforbruk, som igjen kan påvirke klimaet hvis strømmen kommer fra fossile energikilder.</p>
+                                </div>
+
+                                <div class="content-block" id="miljo-eksempler">
+                                    <h3>Eksempler fra hverdagen</h3>
+                                    <ul>
+                                        <li>Streaming på YouTube bruker mye data.</li>
+                                        <li>Scroll på TikTok laster konstant nye videoer.</li>
+                                        <li>AI-tjenester som ChatGPT krever kraftige servere.</li>
+                                    </ul>
+                                    <p class="mt-2 mb-0">Alt dette øker belastningen på datasentre.</p>
+                                </div>
+                            </article>
                         </div>
-                        <div class="border rounded-3 p-3 bg-light">
-                            <p class="mb-0">Her kan du skrive inn forklaringer og eksempler.</p>
-                        </div>
-                        <div class="mt-3 d-grid gap-2">
-                            <div class="p-3 border rounded-3" id="miljo-datasentre">Underpunkt: datasentre</div>
-                            <div class="p-3 border rounded-3" id="miljo-energi">Underpunkt: energi</div>
-                            <div class="p-3 border rounded-3" id="miljo-klima">Underpunkt: klima</div>
-                            <div class="p-3 border rounded-3" id="miljo-eksempler">Underpunkt: eksempler</div>
+                        <div class="col-lg-5">
+                            <aside class="image-column image-miljo">Stock-bilde: datasenter og digital infrastruktur.</aside>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div class="col-lg-6" id="losninger">
-                <div class="card h-100 shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <h2 class="h4 mb-3">Bærekraftige løsninger</h2>
-                        <div class="d-flex flex-wrap gap-2 mb-3">
-                            <a class="btn btn-sm btn-outline-success" href="#losninger-fornybar">Fornybar energi</a>
-                            <a class="btn btn-sm btn-outline-success" href="#losninger-servere">Servere og kjøling</a>
-                            <a class="btn btn-sm btn-outline-success" href="#losninger-kode">Kode</a>
-                            <a class="btn btn-sm btn-outline-success" href="#losninger-gjenbruk">Gjenbruk</a>
-                            <a class="btn btn-sm btn-outline-success" href="#losninger-teknologi">Teknologi</a>
+            <section class="story-section section-losninger" id="losninger">
+                <div class="container">
+                    <div class="row g-4 align-items-stretch flex-lg-row-reverse">
+                        <div class="col-lg-7">
+                            <article class="section-frame">
+                                <p class="section-tag">2. Bærekraftige løsninger</p>
+                                <h2 class="section-title">Hvordan kan utviklingen bli grønnere?</h2>
+                                <p class="section-intro">Mange datasentre bruker nå strøm fra vannkraft, sol eller vind for å redusere utslipp. Dette er ett av flere tiltak som gjør dataindustrien mer bærekraftig.</p>
+
+                                <div class="content-block" id="losninger-fornybar">
+                                    <h3>Fornybar energi</h3>
+                                    <p class="mb-0">Mange datasentre bruker nå strøm fra vannkraft, sol eller vind for å redusere utslipp.</p>
+                                </div>
+
+                                <div class="content-block" id="losninger-kjoling">
+                                    <h3>Bedre kjøling</h3>
+                                    <ul>
+                                        <li>Bruk av kald luft fra naturen (f.eks. i Norge).</li>
+                                        <li>Vannkjøling som er mer effektivt.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="content-block" id="losninger-kode">
+                                    <h3>Mer effektiv programvare</h3>
+                                    <ul>
+                                        <li>Bedre kode bruker mindre ressurser.</li>
+                                        <li>Mindre unødvendig databruk.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="content-block" id="losninger-gjenbruk">
+                                    <h3>Gjenbruk og mindre e-avfall</h3>
+                                    <ul>
+                                        <li>Resirkulering av gamle komponenter.</li>
+                                        <li>Lengre levetid på utstyr.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="content-block" id="losninger-nytt">
+                                    <h3>Nye løsninger</h3>
+                                    <ul>
+                                        <li>Grønn AI (mer energieffektive modeller).</li>
+                                        <li>Datasentre plassert i kalde områder.</li>
+                                    </ul>
+                                </div>
+                            </article>
                         </div>
-                        <div class="border rounded-3 p-3 bg-light">
-                            <p class="mb-0">Her kan du samle tiltakene du vil forklare og vurdere.</p>
-                        </div>
-                        <div class="mt-3 d-grid gap-2">
-                            <div class="p-3 border rounded-3" id="losninger-fornybar">Underpunkt: fornybar energi</div>
-                            <div class="p-3 border rounded-3" id="losninger-servere">Underpunkt: servere og kjøling</div>
-                            <div class="p-3 border rounded-3" id="losninger-kode">Underpunkt: effektiv kode</div>
-                            <div class="p-3 border rounded-3" id="losninger-gjenbruk">Underpunkt: gjenbruk</div>
-                            <div class="p-3 border rounded-3" id="losninger-teknologi">Underpunkt: ny teknologi</div>
+                        <div class="col-lg-5">
+                            <aside class="image-column image-losninger">Stock-bilde: natur og fornybar energi.</aside>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div class="col-lg-6" id="tanker">
-                <div class="card h-100 shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <h2 class="h4 mb-3">Egne tanker og refleksjon</h2>
-                        <div class="d-flex flex-wrap gap-2 mb-3">
-                            <a class="btn btn-sm btn-outline-success" href="#tanker-problem">Hvor stort problem</a>
-                            <a class="btn btn-sm btn-outline-success" href="#tanker-verdt">Verdt kostnaden</a>
-                            <a class="btn btn-sm btn-outline-success" href="#tanker-hverdag">Min hverdag</a>
-                            <a class="btn btn-sm btn-outline-success" href="#tanker-fremtid">Fremtiden</a>
+            <section class="story-section section-tanker" id="tanker">
+                <div class="container">
+                    <div class="row g-4 align-items-stretch">
+                        <div class="col-lg-7">
+                            <article class="section-frame">
+                                <p class="section-tag">3. Egne tanker og refleksjon</p>
+                                <h2 class="section-title">Teknologi, ansvar og valg i hverdagen</h2>
+                                <p class="section-intro">Jeg tror dataindustriens påvirkning på miljøet er et større problem enn mange tenker over. Vi bruker digitale tjenester hele tiden uten å tenke på hvor mye strøm det faktisk krever.</p>
+
+                                <div class="content-block" id="tanker-vurdering">
+                                    <h3>Min vurdering</h3>
+                                    <p>Samtidig er teknologi veldig viktig for samfunnet. Den gjør livet enklere, og kan også bidra til løsninger på klimaproblemer. Derfor mener jeg at utviklingen er verdt det, men bare hvis vi gjør den mer bærekraftig.</p>
+                                </div>
+
+                                <div class="content-block" id="tanker-bidrag">
+                                    <h3>Jeg kan selv bidra ved å</h3>
+                                    <ul>
+                                        <li>Ikke streame unødvendig mye i høy kvalitet.</li>
+                                        <li>Slette filer jeg ikke trenger.</li>
+                                        <li>Bruke teknologi mer bevisst.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="content-block" id="tanker-fremtid">
+                                    <h3>Fremtid</h3>
+                                    <p class="mb-0">I fremtiden tror jeg datasentre vil bli mer miljøvennlige, spesielt i land som Norge med mye fornybar energi.</p>
+                                </div>
+                            </article>
                         </div>
-                        <div class="border rounded-3 p-3 bg-light">
-                            <p class="mb-0">Her kan du skrive dine egne vurderinger og meninger.</p>
-                        </div>
-                        <div class="mt-3 d-grid gap-2">
-                            <div class="p-3 border rounded-3" id="tanker-problem">Underpunkt: problem</div>
-                            <div class="p-3 border rounded-3" id="tanker-verdt">Underpunkt: teknologi vs. miljø</div>
-                            <div class="p-3 border rounded-3" id="tanker-hverdag">Underpunkt: hverdagsvalg</div>
-                            <div class="p-3 border rounded-3" id="tanker-fremtid">Underpunkt: fremtid</div>
+                        <div class="col-lg-5">
+                            <aside class="image-column image-tanker">Stock-bilde: fremtidsperspektiv og bærekraftig utvikling.</aside>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div class="col-lg-6" id="kilder">
-                <div class="card h-100 shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <h2 class="h4 mb-3">Kilder</h2>
-                        <div class="d-flex flex-wrap gap-2 mb-3">
-                            <a class="btn btn-sm btn-outline-success" href="#kilder-oversikt">Kildeoversikt</a>
-                            <a class="btn btn-sm btn-outline-success" href="#kilder-bilder">Bilder</a>
-                        </div>
-                        <div class="border rounded-3 p-3 bg-light">
-                            <p class="mb-0">Skriv kildene nederst i en ryddig oversikt.</p>
-                        </div>
-                        <div class="mt-3 d-grid gap-2">
-                            <div class="p-3 border rounded-3" id="kilder-oversikt">Underpunkt: kilder du har brukt</div>
-                            <div class="p-3 border rounded-3" id="kilder-bilder">Underpunkt: bildeoversikt</div>
-                        </div>
+            <section class="reflection-strip" id="oppsummering">
+                <div class="container">
+                    <div class="reflection-box">
+                        <h2 class="h3 mb-3">Oppsummering</h2>
+                        <p>Alt dette viser at dataindustrien påvirker miljøet, men også at det finnes gode løsninger. Med mer fornybar energi, smartere teknologi og bevisste valg i hverdagen kan vi gjøre den digitale fremtiden mer bærekraftig.</p>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section class="mt-4">
-            <div class="card shadow-sm border-0">
-                <div class="card-body p-4">
-                    <h2 class="h4 mb-3">Bilde / illustrasjon</h2>
-                    <div class="border rounded-3 bg-light d-flex align-items-center justify-content-center" style="min-height: 220px;">
-                        <span class="text-secondary">Sett inn et bilde eller en illustrasjon her</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+            <div class="spacer-end"></div>
+        </main>
+    </div>
 
     <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
     <script src="site-header.js"></script>
