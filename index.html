@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bærekraft</title>
+    <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div id="site-header"></div>
+
+    <main class="container py-5">
+        <section class="text-center mb-5">
+            <p class="text-uppercase text-success fw-semibold mb-2">Oppgave</p>
+            <h1 class="display-5 fw-semibold mb-3">Dataindustri, miljø og bærekraft</h1>
+            <p class="lead mb-4">Bruk denne nettsiden som en ryddig mal. Hver knapp peker til en del av oppgaven, og underknappene viser hva du kan skrive under hvert punkt.</p>
+            <div class="d-flex justify-content-center gap-2 flex-wrap">
+                <a class="btn btn-success btn-lg" href="#miljo">Miljøpåvirkning</a>
+                <a class="btn btn-outline-success btn-lg" href="#losninger">Bærekraftige løsninger</a>
+                <a class="btn btn-outline-success btn-lg" href="#tanker">Egne tanker</a>
+                <a class="btn btn-outline-success btn-lg" href="#kilder">Kilder</a>
+            </div>
+        </section>
+
+        <section class="row g-4">
+            <div class="col-lg-6" id="miljo">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body p-4">
+                        <h2 class="h4 mb-3">Miljøpåvirkning</h2>
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <a class="btn btn-sm btn-outline-success" href="#miljo-datasentre">Datasentre</a>
+                            <a class="btn btn-sm btn-outline-success" href="#miljo-energi">Energi</a>
+                            <a class="btn btn-sm btn-outline-success" href="#miljo-klima">Klima</a>
+                            <a class="btn btn-sm btn-outline-success" href="#miljo-eksempler">Eksempler</a>
+                        </div>
+                        <div class="border rounded-3 p-3 bg-light">
+                            <p class="mb-0">Her kan du skrive inn forklaringer og eksempler.</p>
+                        </div>
+                        <div class="mt-3 d-grid gap-2">
+                            <div class="p-3 border rounded-3" id="miljo-datasentre">Underpunkt: datasentre</div>
+                            <div class="p-3 border rounded-3" id="miljo-energi">Underpunkt: energi</div>
+                            <div class="p-3 border rounded-3" id="miljo-klima">Underpunkt: klima</div>
+                            <div class="p-3 border rounded-3" id="miljo-eksempler">Underpunkt: eksempler</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6" id="losninger">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body p-4">
+                        <h2 class="h4 mb-3">Bærekraftige løsninger</h2>
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <a class="btn btn-sm btn-outline-success" href="#losninger-fornybar">Fornybar energi</a>
+                            <a class="btn btn-sm btn-outline-success" href="#losninger-servere">Servere og kjøling</a>
+                            <a class="btn btn-sm btn-outline-success" href="#losninger-kode">Kode</a>
+                            <a class="btn btn-sm btn-outline-success" href="#losninger-gjenbruk">Gjenbruk</a>
+                            <a class="btn btn-sm btn-outline-success" href="#losninger-teknologi">Teknologi</a>
+                        </div>
+                        <div class="border rounded-3 p-3 bg-light">
+                            <p class="mb-0">Her kan du samle tiltakene du vil forklare og vurdere.</p>
+                        </div>
+                        <div class="mt-3 d-grid gap-2">
+                            <div class="p-3 border rounded-3" id="losninger-fornybar">Underpunkt: fornybar energi</div>
+                            <div class="p-3 border rounded-3" id="losninger-servere">Underpunkt: servere og kjøling</div>
+                            <div class="p-3 border rounded-3" id="losninger-kode">Underpunkt: effektiv kode</div>
+                            <div class="p-3 border rounded-3" id="losninger-gjenbruk">Underpunkt: gjenbruk</div>
+                            <div class="p-3 border rounded-3" id="losninger-teknologi">Underpunkt: ny teknologi</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6" id="tanker">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body p-4">
+                        <h2 class="h4 mb-3">Egne tanker og refleksjon</h2>
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <a class="btn btn-sm btn-outline-success" href="#tanker-problem">Hvor stort problem</a>
+                            <a class="btn btn-sm btn-outline-success" href="#tanker-verdt">Verdt kostnaden</a>
+                            <a class="btn btn-sm btn-outline-success" href="#tanker-hverdag">Min hverdag</a>
+                            <a class="btn btn-sm btn-outline-success" href="#tanker-fremtid">Fremtiden</a>
+                        </div>
+                        <div class="border rounded-3 p-3 bg-light">
+                            <p class="mb-0">Her kan du skrive dine egne vurderinger og meninger.</p>
+                        </div>
+                        <div class="mt-3 d-grid gap-2">
+                            <div class="p-3 border rounded-3" id="tanker-problem">Underpunkt: problem</div>
+                            <div class="p-3 border rounded-3" id="tanker-verdt">Underpunkt: teknologi vs. miljø</div>
+                            <div class="p-3 border rounded-3" id="tanker-hverdag">Underpunkt: hverdagsvalg</div>
+                            <div class="p-3 border rounded-3" id="tanker-fremtid">Underpunkt: fremtid</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6" id="kilder">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body p-4">
+                        <h2 class="h4 mb-3">Kilder</h2>
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <a class="btn btn-sm btn-outline-success" href="#kilder-oversikt">Kildeoversikt</a>
+                            <a class="btn btn-sm btn-outline-success" href="#kilder-bilder">Bilder</a>
+                        </div>
+                        <div class="border rounded-3 p-3 bg-light">
+                            <p class="mb-0">Skriv kildene nederst i en ryddig oversikt.</p>
+                        </div>
+                        <div class="mt-3 d-grid gap-2">
+                            <div class="p-3 border rounded-3" id="kilder-oversikt">Underpunkt: kilder du har brukt</div>
+                            <div class="p-3 border rounded-3" id="kilder-bilder">Underpunkt: bildeoversikt</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4">
+                    <h2 class="h4 mb-3">Bilde / illustrasjon</h2>
+                    <div class="border rounded-3 bg-light d-flex align-items-center justify-content-center" style="min-height: 220px;">
+                        <span class="text-secondary">Sett inn et bilde eller en illustrasjon her</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="site-header.js"></script>
+</body>
+</html>
